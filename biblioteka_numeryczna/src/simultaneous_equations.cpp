@@ -1,49 +1,5 @@
 #include "../include/simultaneous_equations.h"
 
-void loadData(const string& filename, int& N, vector<double>& b, vector<vector<double>>& A) 
-{
-    ifstream file(filename);
-    if (!file) {
-        cerr << "Nie mozna otworzyc pliku!" << endl;
-        exit(1);
-    }
-    string line;
-    while (getline(file, line)) {
-        if (line.find("N = ") != string::npos) {
-            stringstream ss(line.substr(4));
-            ss >> N;
-            break;
-        }
-    }
-    while (getline(file, line)) {
-        if (line.find("b:") != string::npos) {
-            getline(file, line);
-            stringstream ss(line);
-            double val;
-            while (ss >> val) {
-                b.push_back(val);
-            }
-            break;
-        }
-    }
-    while (getline(file, line)) {
-        if (line.find("A:") != string::npos) {
-            for (int i = 0; i < N; ++i) {
-                getline(file, line);
-                stringstream ss(line);
-                vector<double> row;
-                double val;
-                while (ss >> val) {
-                    row.push_back(val);
-                }
-                A.push_back(row);
-            }
-            break;
-        }
-    }
-    file.close();
-}
-
 void printMatrix(const vector<vector<double>>& matrix, const string& name, int iteration = -1) 
 {
     cout << "\n" << name;

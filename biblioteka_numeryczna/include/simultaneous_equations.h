@@ -9,8 +9,6 @@ using namespace std;
 
 const double EPSILON = 1e-9;
 
-void loadData(const string& filename, int& N, vector<double>& b, vector<vector<double>>& A); // Wczytywanie danych
-
 void printMatrix(const vector<vector<double>>& matrix, const string& name, int iteration = -1); // Wyświtlanie kolejnych kroków algorytmu
 
 void luDecomposition(vector<vector<double>>& A, vector<vector<double>>& L, vector<vector<double>>& U, int N); // Rozwiązaywanie układu równań
